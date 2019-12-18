@@ -7,22 +7,15 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Mocha Tests",
-            "program": "${workspaceRoot}/test/node_modules/mocha/bin/mocha",
+            "name": "Nodeos tests",
+            "program": "${workspaceRoot}/node_with_nodeos/node_modules/mocha/bin/mocha",
             "args": [
                 "--inspect-brk",
                 "*.test.js"
             ],
             "port": 9229,
             "internalConsoleOptions": "openOnSessionStart",
-            "cwd": "${workspaceFolder}/test"
-        },
-        {
-            "name": "Launch index.html",
-            "type": "firefox",
-            "request": "launch",
-            "reAttach": true,
-            "file": "${workspaceFolder}/client/index.html"
+            "cwd": "${workspaceFolder}/node_with_nodeos"
         }
     ]
 }
