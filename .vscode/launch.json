@@ -16,6 +16,19 @@
             "port": 9229,
             "internalConsoleOptions": "openOnSessionStart",
             "cwd": "${workspaceFolder}/node_with_nodeos"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Sovereign tests",
+            "program": "${workspaceRoot}/node_sovereign/node_modules/mocha/bin/mocha",
+            "args": [
+                "--inspect-brk",
+                "*.test.js"
+            ],
+            "port": 9229,
+            "internalConsoleOptions": "openOnSessionStart",
+            "cwd": "${workspaceFolder}/node_sovereign"
         }
     ]
 }

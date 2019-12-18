@@ -21,7 +21,7 @@ describe('sovereign', function () {
         contractAccount = await eoslime.Contract.deploy(CONTRACT_WASM_PATH, CONTRACT_ABI_PATH);
     });
 
-    it('Should store the hash', async () => {        
+    it('Should execute hi()', async () => {        
         const tx = await contractAccount.hi();
         
         console.log(tx);

@@ -1,0 +1,14 @@
+{
+  "name": "helloworld11",
+  "version": "1.0.0",
+  "description": "Soverign smart contract",
+  "dependencies": {
+    "mocha": "^6.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
