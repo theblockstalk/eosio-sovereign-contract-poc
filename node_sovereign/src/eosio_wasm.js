@@ -1,9 +1,7 @@
 const fs = require('fs');
+const eosioImports = require('./eosio_imports');
 
 let importObject = {
-    imports: {
-        imported_func: arg => console.log(arg)
-    },
     env: {
         memoryBase: 0,
         tableBase: 0,
@@ -13,15 +11,13 @@ let importObject = {
         table: new WebAssembly.Table({
             initial: 0,
             element: 'anyfunc'
-        }),
+        })
     }
 };
 
-const eosioImports = ["action_data_size", "eosio_assert", "memset", "read_action_data", "eosio_assert_code"];
-
-for (let eosioImport of eosioImports) {
-    importObject.env[eosioImport] = function() { console.log(eosioImport) };
-}
+Object.keys(eosioImports).forEach(function(key) {
+    importObject.env[key] = eosioImports[key];
+});
 
 async function wasmModule(filename) {
     const source = fs.readFileSync(filename);

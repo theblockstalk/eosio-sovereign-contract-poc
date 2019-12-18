@@ -1,4 +1,4 @@
-const wasm = require('./eosio_wasm.js');
+const wasm = require('./eosio_wasm');
 
 const CONTRACT_WASM_PATH = '../build/sovereign.wasm';
 const CONTRACT_ABI_PATH = '../build/sovereign.abi';
