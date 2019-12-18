@@ -6,5 +6,6 @@ const CONTRACT_ABI_PATH = '../build/sovereign.abi';
 module.exports.hi = async function () {
     const mod = await wasm.wasmModule(CONTRACT_WASM_PATH);
     console.log(mod);
-    console.log(mod.instance.exports);
+    const res = await mod.instance.exports.apply();
+    console.log(res);
 }

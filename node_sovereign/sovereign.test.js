@@ -1,5 +1,5 @@
 const assert = require('assert');
-const sovereign = require('./sovereign.js');
+const sovereign = require('./src/sovereign.js');
 
 describe('sovereign', function () {
     // Increase mocha(testing framework) time, otherwise tests fails
