@@ -1,4 +1,5 @@
 const fs = require('fs');
+const WASI = require("@wasmer/wasi").WASI;
 const eosioImports = require('./eosio_imports');
 
 let importObject = {
@@ -20,11 +21,29 @@ Object.keys(eosioImports).forEach(function(key) {
 });
 
 async function wasmModule(filename) {
-    const source = fs.readFileSync(filename);
+    // const source = fs.readFileSync(filename);
+    // const typedArray = new Uint8Array(source);
 
+    // return await WebAssembly.instantiate(typedArray, importObject);
+
+    const source = fs.readFileSync(filename);
     const typedArray = new Uint8Array(source);
 
-    return await WebAssembly.instantiate(typedArray, importObject)
+    let wasi = new WASI({
+        // preopens: {
+        //   "/sandbox": "/sandbox"
+        // },
+        env: importObject.eng,
+        // args: args,
+        bindings: {
+            ...WASI.defaultBindings,
+        }
+    });
+    
+    let { instance } = await WebAssembly.instantiate(typedArray, {
+        wasi_unstable: wasi.wasiImport
+    });
+    return { wasi, instance };
 }
 
 module.exports.wasmModule = wasmModule;
