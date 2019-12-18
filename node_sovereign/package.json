@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Soverign smart contract",
   "dependencies": {
+    "@wasmer/wasi": "^0.5.1",
     "mocha": "^6.2.2"
   },
   "devDependencies": {},
