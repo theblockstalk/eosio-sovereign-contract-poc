@@ -7,15 +7,15 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Nodeos tests",
-            "program": "${workspaceRoot}/node_with_nodeos/node_modules/mocha/bin/mocha",
+            "name": "Contract tests",
+            "program": "${workspaceRoot}/contract_test/node_modules/mocha/bin/mocha",
             "args": [
                 "--inspect-brk",
                 "*.test.js"
             ],
             "port": 9229,
             "internalConsoleOptions": "openOnSessionStart",
-            "cwd": "${workspaceFolder}/node_with_nodeos"
+            "cwd": "${workspaceFolder}/contract_test"
         },
         {
             "type": "node",

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Soverign smart contract",
   "dependencies": {
+    "eosjs": "^20.0.0",
     "mocha": "^6.2.2"
   },
   "devDependencies": {},

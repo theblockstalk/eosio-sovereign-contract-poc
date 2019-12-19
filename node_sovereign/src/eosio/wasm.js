@@ -1,5 +1,5 @@
 const fs = require('fs');
-const eosioImports = require('./eosio_imports');
+const eosioImports = require('./wasm_imports');
 
 let importObject = {
     env: {
