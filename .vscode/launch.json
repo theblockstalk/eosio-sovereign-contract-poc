@@ -5,9 +5,9 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Contract tests",
             "type": "node",
             "request": "launch",
-            "name": "Contract tests",
             "program": "${workspaceRoot}/contract_test/node_modules/mocha/bin/mocha",
             "args": [
                 "--inspect-brk",
@@ -18,17 +18,10 @@
             "cwd": "${workspaceFolder}/contract_test"
         },
         {
-            "type": "node",
+            "name": "Launch index.html",
+            "type": "chrome",
             "request": "launch",
-            "name": "Sovereign tests",
-            "program": "${workspaceRoot}/node_sovereign/node_modules/mocha/bin/mocha",
-            "args": [
-                "--inspect-brk",
-                "*.test.js"
-            ],
-            "port": 9229,
-            "internalConsoleOptions": "openOnSessionStart",
-            "cwd": "${workspaceFolder}/node_sovereign"
-        }
+            "file": "${workspaceFolder}/sovereign/index.html"
+        },
     ]
 }

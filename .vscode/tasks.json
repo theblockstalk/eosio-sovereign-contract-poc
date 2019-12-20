@@ -13,11 +13,21 @@
             },
         },
         {
+            "label": "Build sovereign app",
+            "type": "shell",
+            "group": "build",
+            // npm install -g browserify
+            "command": "browserify ./src/sovereign.js -o ./bundle.js",
+            "options": {
+                "cwd": "./sovereign"
+            },
+        },
+        {
             "label": "Start nodeos",
             "type": "shell",
             "command": "nodeos --config testing.ini --delete-all-blocks >> nodeos.log 2>&1 &",
             "options": {
-                "cwd": "./"
+                "cwd": "./eosio"
             }
         },
         {

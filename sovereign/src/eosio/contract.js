@@ -1,11 +1,14 @@
-const fs = require('fs');
-const eosio_wasm = require('./wasm');
+console.log("loading contract.js")
+
+// const fs = require('fs');
+// const eosio_wasm = require('./wasm');
 
 
-async function contract(wasm_file, abi_file) {
-    const wasm_module = await eosio_wasm.wasm_module(wasm_file);
+export async function contract(wasm_file, abi_file) {
+    console.log("contract()")
+    // const wasm_module = await eosio_wasm.wasm_module(wasm_file);
 
-    return wasm_module;
+    // return wasm_module;
     // const abi_source = fs.readFileSync(abi_file);
     // const abi = JSON.parse(abi_source);
 
@@ -21,5 +24,3 @@ async function contract(wasm_file, abi_file) {
 
     // return contract;
 }
-
-module.exports.contract = contract;
