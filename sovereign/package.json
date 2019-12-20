@@ -11,7 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "mocha",
-    "build": "browserify -t brfs ./src/main.js -o bundle.js"
+    "build": "browserify -t brfs --debug ./src/main.js -o bundle.js"
   },
   "author": "",
   "license": "ISC"
