@@ -1,4 +1,3 @@
-const fs = require('fs');
 const eosio_wasm = require('./wasm');
 
 
@@ -6,9 +5,8 @@ async function contract(wasm_file, abi_file) {
     const wasm_module = await eosio_wasm.wasm_module(wasm_file);
 
     return wasm_module;
-    // const abi_source = fs.readFileSync(abi_file);
-    // const abi = JSON.parse(abi_source);
-
+    // const abi = JSON.parse(abi_file);
+    
     // let contract = {};
     // for (let action of abi.actions) {
     //     contract[action.name] = async function() {

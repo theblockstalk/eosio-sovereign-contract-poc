@@ -13,6 +13,15 @@
             },
         },
         {
+            "label": "Create bundle.js",
+            "type": "shell",
+            "group": "build",
+            "command": "npm run build",
+            "options": {
+                "cwd": "./sovereign"
+            }
+        },
+        {
             "label": "Start nodeos",
             "type": "shell",
             "command": "nodeos --config testing.ini --delete-all-blocks >> nodeos.log 2>&1 &",

@@ -1,4 +1,3 @@
-const fs = require('fs');
 const eosioImports = require('./wasm_imports');
 
 let importObject = {
@@ -19,9 +18,8 @@ Object.keys(eosioImports).forEach(function(key) {
     importObject.env[key] = eosioImports[key];
 });
 
-async function wasm_module(filename) {
-    const source = fs.readFileSync(filename);
-    const typedArray = new Uint8Array(source);
+async function wasm_module(file) {
+    const typedArray = new Uint8Array(file);
 
     const module =  await WebAssembly.instantiate(typedArray, importObject);
     return module;

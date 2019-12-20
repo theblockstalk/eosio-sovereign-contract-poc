@@ -1,5 +1,3 @@
-// const eosjs = require('eosjs');
-
 function nameToUint8Array(s) {
     if (typeof s !== 'string') {
         throw new Error('Expected string containing name');
