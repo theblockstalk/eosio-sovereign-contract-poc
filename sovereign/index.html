@@ -6,11 +6,14 @@
   </head>
   <body>
     <script>
-      // Source C++ file for .wasm build ../contract
-      // this is compiled to wasm using the eosio.cdt tool. The eosio team has reported that the resulting wasm file is compatible with the wasm standard
+      // Source C++ file for .wasm build:
+      // https://github.com/theblockstalk/eosio-sovereign-contract-poc/tree/b726b0bc7f1881704f8c39ed40e623e39ff661da/contract
+      //
+      // This is compiled to wasm using the eosio.cdt tool. The eosio team has reported that the resulting wasm file is compatible with the wasm standard
       // https://github.com/EOSIO/eosio.cdt
 
-      // This needs to be served over http
+      // This needs to be served over http. Source
+      // https://github.com/theblockstalk/eosio-sovereign-contract-poc/blob/b726b0bc7f1881704f8c39ed40e623e39ff661da/build/sovereign.wasm
       const CONTRACT_WASM_FILE = fetch('../build/sovereign.wasm');
 
       let importObject = {
