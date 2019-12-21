@@ -57,7 +57,7 @@
 
       const typedArray = new Uint8Array(CONTRACT_WASM_FILE);
 
-      WebAssembly.instantiate(CONTRACT_WASM_FILE, importObject).then(module => {
+      WebAssembly.instantiate(typedArray, importObject).then(module => {
         module.instance.exports.apply(
           Uint8Array("sovereign"),
           Uint8Array("dablockstalk"),
