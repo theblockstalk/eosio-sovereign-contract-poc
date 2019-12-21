@@ -5,12 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            // https://github.com/Microsoft/vscode-chrome-debug
             "name": "Launch index.html",
             "type": "chrome",
             "request": "launch",
             "file": "${workspaceFolder}/sovereign/index.html",
-            "breakOnLoad": true
+            // "breakOnLoad": true
             // need to turn this on when loaded chrome://flags/#enable-experimental-webassembly-features
+            "sourceMaps": true,
+            "smartStep": false,
+            "showAsyncStacks": true
         },
         {
             "type": "node",

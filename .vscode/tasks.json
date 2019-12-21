@@ -4,6 +4,15 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Install latest stable chromium",
+            "type": "shell",
+            "group": "none",
+            "command": "sudo apt install chromium-browser",
+            // Requires latest build of chromium!
+            // https://sauleau.com/notes/wasm-bigint.html
+            // https://www.chromium.org/getting-involved/download-chromium
+        },
+        {
             "label": "Build wasm and abi",
             "type": "shell",
             "group": "build",

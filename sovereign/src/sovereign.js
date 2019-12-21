@@ -11,7 +11,7 @@ const CONTRACT_ABI_FILE = fs.readFileSync('../build/sovereign.abi');
 module.exports.hi = async function () {
     console.log("hi");
     const sovereign_contract = await contract.contract(CONTRACT_WASM_FILE, CONTRACT_ABI_FILE);
-    console.log(sovereign_contract);
+    
     const sovereign_name = name("sovereign");
     console.log("calling apply function");
     await sovereign_contract.instance.exports.apply(
