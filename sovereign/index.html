@@ -6,12 +6,12 @@
   </head>
   <body>
     <script>
-      // See ../ for .wasm file
-      // Source C++ file for .wasm build https://github.com/theblockstalk/eosio-sovereign-contract-poc/tree/master/contract
+      // Source C++ file for .wasm build ../contract
       // this is compiled to wasm using the eosio.cdt tool. The eosio team has reported that the resulting wasm file is compatible with the wasm standard
       // https://github.com/EOSIO/eosio.cdt
 
-      const CONTRACT_WASM_FILE = Buffer("AGFzbQEAAAABMwpgAAF/YAJ/fwBgA39/fwF/YAJ/fwF/YAJ/fgBgAABgA35+fgBgAX8Bf2ABfwBgAn5+AAJnBQNlbnYQYWN0aW9uX2RhdGFfc2l6ZQAAA2Vudgxlb3Npb19hc3NlcnQAAQNlbnYGbWVtc2V0AAIDZW52EHJlYWRfYWN0aW9uX2RhdGEAAwNlbnYRZW9zaW9fYXNzZXJ0X2NvZGUABAMHBgUGBwUICQQFAXABAQEFAwEAAQYWA38BQYDAAAt/AEGpwAALfwBBqcAACwcJAQVhcHBseQAGCoIDBgQAEAgLegAQBSAAIAFRBEBCgICAgICAgMDrACACUQRAIAAgARAKBSAAQoCAgICAwLqY1QBSBEBBAEKAgIDZ07Ptgu8AEAQLCwVCgICAgIDAupjVACABUQRAQoCAgICu+t7qpH8gAlEEQEEAQoGAgNnTs+2C7wAQBAsLC0EAEAkLgAEBA38CQAJAAkACQCAARQ0AQQBBACgCjEAgAEEQdiIBaiICNgKMQEEAQQAoAoRAIgMgAGpBB2pBeHEiADYChEAgAkEQdCAATQ0BIAFAAEF/Rg0CDAMLQQAPC0EAIAJBAWo2AoxAIAFBAWpAAEF/Rw0BC0EAQZDAABABIAMPCyADCzYBAX8jAEEQayIAQQA2AgxBACAAKAIMKAIAQQdqQXhxIgA2AoRAQQAgADYCgEBBAD8ANgKMQAsCAAtEAQN/IwAiAiEDAkAQACIERQ0AAkACQCAEQYAESQ0AIAQQByECDAELIAIgBEEPakFwcWsiAiQACyACIAQQAxoLIAMkAAsLKgIAQZDAAAsZZmFpbGVkIHRvIGFsbG9jYXRlIHBhZ2VzAABBAAsEMCAAAA==","base64");;
+      // This needs to be served over http
+      const CONTRACT_WASM_FILE = fetch('../build/sovereign.wasm');
 
       let importObject = {
           env: {
@@ -54,7 +54,7 @@
 
       const typedArray = new Uint8Array(CONTRACT_WASM_FILE);
 
-      WebAssembly.instantiate(typedArray, importObject).then(module => {
+      WebAssembly.instantiate(CONTRACT_WASM_FILE, importObject).then(module => {
         module.instance.exports.apply(
           Uint8Array("sovereign"),
           Uint8Array("dablockstalk"),
