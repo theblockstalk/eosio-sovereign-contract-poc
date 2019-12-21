@@ -3,13 +3,65 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-    <title>Sovereign contract</title>
-
-    <script src='./bundle.js'></script>
   </head>
   <body>
-    <h1>An EOSIO contract that is executed locally in the browser</h1>
-    Check the web console for results output
+    <script>
+      // See ../ for .wasm file
+      // Source C++ file for .wasm build https://github.com/theblockstalk/eosio-sovereign-contract-poc/tree/master/contract
+      // this is compiled to wasm using the eosio.cdt tool. The eosio team has reported that the resulting wasm file is compatible with the wasm standard
+      // https://github.com/EOSIO/eosio.cdt
+
+      const CONTRACT_WASM_FILE = Buffer("AGFzbQEAAAABMwpgAAF/YAJ/fwBgA39/fwF/YAJ/fwF/YAJ/fgBgAABgA35+fgBgAX8Bf2ABfwBgAn5+AAJnBQNlbnYQYWN0aW9uX2RhdGFfc2l6ZQAAA2Vudgxlb3Npb19hc3NlcnQAAQNlbnYGbWVtc2V0AAIDZW52EHJlYWRfYWN0aW9uX2RhdGEAAwNlbnYRZW9zaW9fYXNzZXJ0X2NvZGUABAMHBgUGBwUICQQFAXABAQEFAwEAAQYWA38BQYDAAAt/AEGpwAALfwBBqcAACwcJAQVhcHBseQAGCoIDBgQAEAgLegAQBSAAIAFRBEBCgICAgICAgMDrACACUQRAIAAgARAKBSAAQoCAgICAwLqY1QBSBEBBAEKAgIDZ07Ptgu8AEAQLCwVCgICAgIDAupjVACABUQRAQoCAgICu+t7qpH8gAlEEQEEAQoGAgNnTs+2C7wAQBAsLC0EAEAkLgAEBA38CQAJAAkACQCAARQ0AQQBBACgCjEAgAEEQdiIBaiICNgKMQEEAQQAoAoRAIgMgAGpBB2pBeHEiADYChEAgAkEQdCAATQ0BIAFAAEF/Rg0CDAMLQQAPC0EAIAJBAWo2AoxAIAFBAWpAAEF/Rw0BC0EAQZDAABABIAMPCyADCzYBAX8jAEEQayIAQQA2AgxBACAAKAIMKAIAQQdqQXhxIgA2AoRAQQAgADYCgEBBAD8ANgKMQAsCAAtEAQN/IwAiAiEDAkAQACIERQ0AAkACQCAEQYAESQ0AIAQQByECDAELIAIgBEEPakFwcWsiAiQACyACIAQQAxoLIAMkAAsLKgIAQZDAAAsZZmFpbGVkIHRvIGFsbG9jYXRlIHBhZ2VzAABBAAsEMCAAAA==","base64");;
+
+      let importObject = {
+          env: {
+              memoryBase: 0,
+              memory: new WebAssembly.Memory({
+                  initial: 256
+              }),
+              action_data_size: function() {
+                  console.log('action_data_size');
+                  const i32a = 11;
+                  return i32a;
+              },
+              eosio_assert: function(i32a, i32b) {
+                  console.log('eosio_assert');
+                  console.log(i32a);
+                  console.log(i32b);
+              },
+              memset: function(i32a, i32b, i32c) {
+                  console.log('memset');
+                  console.log(i32a);
+                  console.log(i32b);
+                  console.log(i32c);
+                  const i32d = 12;
+                  return i32d;
+              },
+              read_action_data: function(i32a, i32b) {
+                  console.log('read_action_data');
+                  console.log(i32a);
+                  console.log(i32b);
+                  const i32c = 13;
+                  return i32c;
+              },
+              eosio_assert_code: function(condition /*i32*/, error_code /*i64*/) {
+                  console.log('eosio_assert_code');
+                  console.log(condition);
+                  console.log(error_code);
+              }
+          }
+      };
+
+      const typedArray = new Uint8Array(CONTRACT_WASM_FILE);
+
+      WebAssembly.instantiate(typedArray, importObject).then(module => {
+        module.instance.exports.apply(
+          Uint8Array("sovereign"),
+          Uint8Array("dablockstalk"),
+          Uint8Array("hi")
+        );
+      });
+
+    </script>
   </body>
 </html>
