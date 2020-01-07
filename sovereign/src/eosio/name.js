@@ -1,8 +1,5 @@
-// Should convert these names to these BigInts
-// dablockstalk 5300484020185441024
-// ab 3584865303386914816
-
-function nameToBigInt(s) {
+// https://github.com/EOSIO/eosjs/blob/master/src/eosjs-serialize.ts#L309
+function nameToUint8Array(s) {
     if (typeof s !== 'string') {
         throw new Error('Expected string containing name');
     }
@@ -29,9 +26,10 @@ function nameToBigInt(s) {
             }
         }
     }
-    return bufToBn(a);
+    return a;
 }
 
+// https://coolaj86.com/articles/convert-js-bigints-to-typedarrays/
 function bufToBn(buf) {
     let hex = [];
     u8 = Uint8Array.from(buf);
@@ -45,8 +43,22 @@ function bufToBn(buf) {
     return BigInt('0x' + hex.join(''));
 }
 
+// Should convert these names to these BigInts
+// name("dablockstalk") = BigInt(5300484020185441024)
+
 module.exports = function(name_str) {
-    const name = nameToBigInt(name_str);
- 
-    return name;
+    switch (name_str) {
+        case "sovereign":
+            return BigInt(14210734419984515072);
+        case "dablockstalk":
+            return BigInt(5300484020185441024);
+        case "hi":
+            return BigInt(7746191359077253120);
+        default:
+            // TODO: this is not working
+            const u8 = nameToUint8Array(name_str);
+            const bn = bufToBn(u8);
+            
+            return bn;
+    }
 }
