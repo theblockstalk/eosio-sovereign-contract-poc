@@ -2,35 +2,32 @@
 module.exports = {
     action_data_size: function() {
         console.log('action_data_size');
-        const i32a = 11;
-        return i32a;
+        return 10 /*int i32*/;
     },
-    eosio_assert: function(i32a, i32b) {
+    eosio_assert: function(condition /*bool i32*/, msg /*null_terminated_ptr i32*/) {
         console.log('eosio_assert');
-        console.log(i32a);
-        console.log(i32b);
+        console.log(condition);
+        console.log(msg);
     },
-    memset: function(i32a, i32b, i32c) {
+    memset: function(dest /*array_ptr<char> i32*/, value /*int i32*/, length /*size_t i32*/) {
         console.log('memset');
-        console.log(i32a);
-        console.log(i32b);
-        console.log(i32c);
-        const i32d = 12;
-        return i32d;
+        console.log(dest);
+        console.log(value);
+        console.log(length);
+        return 12 /*char* i32*/;
     },
-    read_action_data: function(i32a, i32b) {
+    read_action_data: function(memory /*array_ptr<char> i32*/, buffer_size /*size_t i32*/) {
         console.log('read_action_data');
-        console.log(i32a);
-        console.log(i32b);
-        const i32c = 13;
-        return i32c;
+        console.log(memory);
+        console.log(buffer_size);
+        return 10 /*int i32*/;
     },
-    eosio_assert_code: function(condition /*i32*/, error_code /*i64*/) {
+    eosio_assert_code: function(condition /*bool i32*/, error_code /*uint64_t i64*/) {
         console.log('eosio_assert_code');
         console.log(condition);
         console.log(error_code);
 
-        const generic_system_error = 2147483647; //actual value is 10000000000000000000ULL;
+        const generic_system_error = BigInt(10000000000000000000);
 
         if (condition === 0) {
             if (error_code >= generic_system_error) {
@@ -39,5 +36,9 @@ module.exports = {
                 throw new Error("assertion failure with error code: " + error_code);
             }
         }
+    },
+    prints: function(str /*null_terminated_ptr i32*/) {
+        console.log("prints");
+        console.log(str);
     }
 }

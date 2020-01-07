@@ -1,4 +1,8 @@
-function nameToUint8Array(s) {
+// Should convert these names to these BigInts
+// dablockstalk 5300484020185441024
+// ab 3584865303386914816
+
+function nameToBigInt(s) {
     if (typeof s !== 'string') {
         throw new Error('Expected string containing name');
     }
@@ -42,7 +46,7 @@ function bufToBn(buf) {
 }
 
 module.exports = function(name_str) {
-    const name = nameToUint8Array(name_str);
+    const name = nameToBigInt(name_str);
  
     return name;
 }

@@ -13,8 +13,8 @@ module.exports.hi = async function () {
 
     const receiver = name("sovereign");
     const code = name("dablockstalk");
-    const action = name("hi")
-    console.log(receiver, code, action);
+    const action = name("ab")
+
     await sovereign_contract.instance.exports.apply(receiver, code, action);
     console.log("apply function called");
 }
