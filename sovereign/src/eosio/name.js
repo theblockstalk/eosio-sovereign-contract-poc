@@ -25,7 +25,20 @@ function nameToUint8Array(s) {
             }
         }
     }
-    return a;
+    return bufToBn(a);
+}
+
+function bufToBn(buf) {
+    let hex = [];
+    u8 = Uint8Array.from(buf);
+    
+    u8.forEach(function (i) {
+        let h = i.toString(16);
+        if (h.length % 2) { h = '0' + h; }
+        hex.push(h);
+    });
+
+    return BigInt('0x' + hex.join(''));
 }
 
 module.exports = function(name_str) {
