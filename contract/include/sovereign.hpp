@@ -18,3 +18,22 @@ CONTRACT sovereign : public contract {
     // };
     // typedef multi_index<name("messages"), messages> messages_table;
 };
+
+/*
+// Can be used to manually override the dispacher
+
+extern "C" {
+    void apply(uint64_t receiver, uint64_t code, uint64_t action) {
+        if( code == receiver ) {
+          switch(action) {
+            case name("hi").value: 
+              execute_action(name(receiver), name(code), &sovereign::hi); 
+              break;
+            default:
+              print("did not execute defined action");
+              break;
+          }
+        }
+    }
+};
+*/

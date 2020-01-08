@@ -1,3 +1,5 @@
+// nodes definitions in
+// https://github.com/EOSIO/eos/blob/master/libraries/chain/wasm_interface.cpp
 
 module.exports = {
     action_data_size: function() {

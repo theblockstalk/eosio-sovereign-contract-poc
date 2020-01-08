@@ -12,7 +12,7 @@ module.exports.hi = async function () {
     console.log("calling apply function");
 
     const receiver = name("sovereign");
-    const code = name("dablockstalk");
+    const code = receiver;
     const action = name("hi")
 
     await sovereign_contract.instance.exports.apply(receiver, code, action);

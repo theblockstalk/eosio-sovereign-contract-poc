@@ -46,7 +46,7 @@ function bufToBn(buf) {
 // Should convert these names to these BigInts
 // name("dablockstalk") = BigInt(5300484020185441024)
 
-module.exports = function(name_str) {
+const name_to_string = function(name_str) {
     switch (name_str) {
         case "sovereign":
             return BigInt(14210734419984515072);
@@ -62,3 +62,10 @@ module.exports = function(name_str) {
             return bn;
     }
 }
+
+module.exports = name_to_string;
+
+console.log(name_to_string("sovereign"));
+console.log(name_to_string("dablockstalk"));
+console.log(name_to_string("hi"));
+console.log(name_to_string("ab"));
