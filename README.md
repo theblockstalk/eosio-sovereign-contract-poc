@@ -45,3 +45,22 @@ You can then use the VS Code debugger, set breakpoints and inspect variables. Ve
 4. Launch the `Launch index.html` debug launch
 5. Open `chrome://flags/#enable-experimental-webassembly-features` in a new window an enable.
 6. Relaunch the `Launch index.html` debug launch
+
+## What's happening
+loads the contract
+creates new webassebly instance with the wasm file
+...
+
+## What are the applications
+private contracts
+scalable public contracts
+sovereign data
+private legal contracts
+
+## What's the work required
+a few ways I can think of that would work for production
+
+javascript
+
+use nodeos code in standalone app - plugin, limited compatibility
+use nodeos code in wasm instance
