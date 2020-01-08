@@ -13,6 +13,15 @@
             },
         },
         {
+            "label": "Create wast",
+            "type": "shell",
+            "group": "build",
+            "command": "eosio-wasm2wast build/sovereign.wasm -o build/sovereign.wast",
+            "options": {
+                "cwd": "./"
+            },
+        },
+        {
             "label": "Create bundle.js",
             "type": "shell",
             "group": "build",

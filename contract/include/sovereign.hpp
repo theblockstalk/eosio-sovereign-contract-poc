@@ -12,8 +12,7 @@ CONTRACT sovereign : public contract {
   private:
     // TABLE messages {
     //   name    user;
-    //   checksum256 hash;
-    //   time_point last_updated;
+    //   string  msg;
     //   auto primary_key() const { return user.value; }
     // };
     // typedef multi_index<name("messages"), messages> messages_table;
